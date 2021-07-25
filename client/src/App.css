@@ -157,7 +157,7 @@
 .footer-list-item {
 	background-color: inherit !important;
 	border: none !important;
-	color: #fff;
+	color: #fff !important;
 }
 
 .fa-ellipsis-h {
