@@ -7,6 +7,7 @@ import ItemDetails from './ItemDetails';
 import Cart from './Cart';
 import ErrorPage from './ErrorPage';
 import Login from './Login';
+import Register from './Register';
 
 const Main = () => {
 	return (
@@ -24,6 +25,11 @@ const Main = () => {
 				component={ItemDetails}
 			></Route>
 			<Route exact path='/login' component={Login}></Route>
+			<Route
+				exact
+				path='/register'
+				component={Register}
+			></Route>
 			<Route exact path='/cart' component={Cart}></Route>
 			<Route path='/' component={ErrorPage}></Route>
 		</Switch>

@@ -10,6 +10,7 @@ import {
 	Label,
 	Input,
 	Button,
+	FormLink,
 } from './styled-components/FormStyles';
 
 export default function Login() {
@@ -32,6 +33,9 @@ export default function Login() {
 						</LabelWrapper>
 						<Input type='password' />
 						<Button type='submit'></Button>
+						<Link to='/register'>
+							<FormLink>Or, Sign up</FormLink>
+						</Link>
 					</InputContainer>
 				</StyledForm>
 			</FormContainer>

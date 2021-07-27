@@ -10,19 +10,28 @@ import {
 	Label,
 	Input,
 	Button,
+	FormLink,
 } from './styled-components/FormStyles';
 
 export default function Register() {
 	return (
 		<>
 			<FormContainer>
-				<StyledForm>
+				<StyledForm register>
 					<Link to='/' className='link'>
 						<Logo>
 							You<Special>Shop</Special>
 						</Logo>
 					</Link>
 					<InputContainer>
+						<LabelWrapper>
+							<Label htmlFor='firstName'>First Name</Label>
+						</LabelWrapper>
+						<Input type='text' />
+						<LabelWrapper>
+							<Label htmlFor='lastName'>Last Name</Label>
+						</LabelWrapper>
+						<Input type='text' />
 						<LabelWrapper>
 							<Label htmlFor='email'>Email</Label>
 						</LabelWrapper>
@@ -31,7 +40,16 @@ export default function Register() {
 							<Label htmlFor='password'>Password</Label>
 						</LabelWrapper>
 						<Input type='password' />
+						<LabelWrapper>
+							<Label htmlFor='password'>
+								Re-type Password
+							</Label>
+						</LabelWrapper>
+						<Input type='password' />
 						<Button type='submit'></Button>
+						<Link to='/login'>
+							<FormLink>Or, Sign in</FormLink>
+						</Link>
 					</InputContainer>
 				</StyledForm>
 			</FormContainer>

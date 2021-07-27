@@ -12,10 +12,10 @@ export const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 	background-color: #212629;
 	height: ${(props) =>
-		props.register ? '760px' : '550px'};
+		props.register ? '760px' : '500px'};
 	width: 400px;
 	padding: 2rem 1.5rem;
 	box-shadow: 0.1em 0.1em 1em rgba(0, 0, 0, 0.4);
@@ -23,6 +23,7 @@ export const StyledForm = styled.form`
 `;
 
 export const Logo = styled.h1`
+	margin-bottom: 3.5rem;
 	color: #fff;
 	font-size: 3rem;
 	font-weight: bolder;
@@ -36,7 +37,7 @@ export const InputContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 60%;
+	height: 100%;
 	width: 100%;
 `;
 
@@ -54,7 +55,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-	margin-bottom: 2.5rem;
+	margin-bottom: 1.5rem;
 	padding: 0.3rem 0.7rem;
 	width: 80%;
 	border: none;
@@ -66,7 +67,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.input`
-	margin-top: 2rem;
+	margin-top: 0.5rem;
 	padding: 0.5rem 2rem;
 	font-size: 16px;
 	border: none;
@@ -76,5 +77,17 @@ export const Button = styled.input`
 
 	&:hover {
 		background-color: #fff;
+	}
+`;
+
+export const FormLink = styled.p`
+	margin-top: 1.5rem;
+	font-size: 18px;
+	color: #fff;
+	text-decoration: underline;
+
+	&:hover {
+		color: #b5e5cf;
+		text-decoration: none;
 	}
 `;
