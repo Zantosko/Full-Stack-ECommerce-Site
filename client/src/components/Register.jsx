@@ -12,7 +12,7 @@ import {
 	Button,
 } from './styled-components/FormStyles';
 
-export default function Login() {
+export default function Register() {
 	return (
 		<>
 			<FormContainer>
