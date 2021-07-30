@@ -27,25 +27,25 @@ export default function Register() {
 						<LabelWrapper>
 							<Label htmlFor='firstName'>First Name</Label>
 						</LabelWrapper>
-						<Input type='text' />
+						<Input name='firstName' type='text' />
 						<LabelWrapper>
 							<Label htmlFor='lastName'>Last Name</Label>
 						</LabelWrapper>
-						<Input type='text' />
+						<Input name='lastName' type='text' />
 						<LabelWrapper>
 							<Label htmlFor='email'>Email</Label>
 						</LabelWrapper>
-						<Input type='email' />
+						<Input name='email' type='email' />
 						<LabelWrapper>
 							<Label htmlFor='password'>Password</Label>
 						</LabelWrapper>
-						<Input type='password' />
+						<Input name='password' type='password' />
 						<LabelWrapper>
-							<Label htmlFor='password'>
+							<Label htmlFor='rePassword'>
 								Re-type Password
 							</Label>
 						</LabelWrapper>
-						<Input type='password' />
+						<Input name='rePassword' type='password' />
 						<Button type='submit'></Button>
 						<Link to='/login'>
 							<FormLink>Or, Sign in</FormLink>

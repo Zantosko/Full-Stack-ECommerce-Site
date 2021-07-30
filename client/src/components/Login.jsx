@@ -27,11 +27,11 @@ export default function Login() {
 						<LabelWrapper>
 							<Label htmlFor='email'>Email</Label>
 						</LabelWrapper>
-						<Input type='email' />
+						<Input name='email' type='email' />
 						<LabelWrapper>
 							<Label htmlFor='password'>Password</Label>
 						</LabelWrapper>
-						<Input type='password' />
+						<Input name='password' type='password' />
 						<Button type='submit'></Button>
 						<Link to='/register'>
 							<FormLink>Or, Sign up</FormLink>
