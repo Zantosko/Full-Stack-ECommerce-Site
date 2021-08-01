@@ -7,12 +7,6 @@ const path = require('path');
 
 const port = process.env.PORT || 4001;
 
-//* Shorten file path
-app.use(
-	'/uploads',
-	express.static(path.join(__dirname, 'public/uploads'))
-);
-
 //* Middleware
 app.use(express.json());
 app.use(cors());
@@ -36,15 +30,12 @@ app.use('/auth', require('./routes/jwtAuth'));
 //? User Routes
 app.use('/user', require('./routes/user'));
 
-//? Livefeed Routes
-app.use('/livefeed', require('./routes/livefeed'));
-
 //* Combines client and build directories
-app.get('*', (req, res) => {
-	res.sendFile(
-		path.join(__dirname + '/client/build/index.html')
-	);
-});
+// app.get('*', (req, res) => {
+// 	res.sendFile(
+// 		path.join(__dirname + '/client/build/index.html')
+// 	);
+// });
 
 //* Indicates server is running
 app.listen(port, () => {

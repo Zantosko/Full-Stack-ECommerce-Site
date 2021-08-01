@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
 	FormContainer,
@@ -14,6 +14,30 @@ import {
 } from './styled-components/FormStyles';
 
 export default function Login() {
+	const [inputs, setInputs] = useState({
+		email: '',
+		password: '',
+	});
+
+	const { email, password } = inputs;
+
+	const onChange = (e) => {
+		setInputs({
+			...inputs,
+			[e.target.name]: e.target.value,
+		});
+	};
+
+	// const onSubmitForm = async e => {
+	//   e.preventDefault();
+	//   try {
+	//     const body = { email, password }
+	//     const response = await fetch()
+	//   } catch (err) {
+	//     console.error(err)
+	//   }
+	// }
+
 	return (
 		<>
 			<FormContainer>
