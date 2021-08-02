@@ -3,7 +3,6 @@ module.exports = function (req, res, next) {
 		firstName,
 		lastName,
 		email,
-		username,
 		password,
 		rePassword,
 	} = req.body;
@@ -20,7 +19,6 @@ module.exports = function (req, res, next) {
 				firstName,
 				lastName,
 				email,
-				username,
 				password,
 				rePassword,
 			].every(Boolean)

@@ -1,12 +1,14 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 import products from './productReducer';
 import itemDetails from './itemDetailReducer';
 import cart from './cartReducer';
-// Import your reducers and put them inside of here so you have access to the store.
+import isAuthenticated from './authReducer';
+
 const rootReducer = combineReducers({
-  products,
-  itemDetails,
-  cart
+	products,
+	itemDetails,
+	cart,
+	isAuthenticated,
 });
 
 export default rootReducer;

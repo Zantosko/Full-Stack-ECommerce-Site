@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Profile } = require('../models');
+const { User, Cart } = require('../models');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator');
 const validInfo = require('../middleware/validInfo');
@@ -13,23 +13,23 @@ router.post('/register', validInfo, async (req, res) => {
 			firstName,
 			lastName,
 			email,
-			username,
 			password,
 			rePassword,
-			bio,
-			profileImage,
+
 			userId,
 		} = req.body;
 
-		// Check if username already exists in DB
+		// Check if email already exists in DB
 		const user = await User.findAll({
 			where: {
-				username: username,
+				email: email,
 			},
 		});
 
 		if (user.length > 0) {
-			return res.status(401).json('User already exists');
+			return res
+				.status(401)
+				.json('That email has already been used');
 		}
 
 		// Bcrypt the password and re-typed password
@@ -46,14 +46,11 @@ router.post('/register', validInfo, async (req, res) => {
 			firstName,
 			lastName,
 			email,
-			username,
 			password: bcryptPassword,
 			rePassword: bcryptRePassword,
 		});
 
-		const newProfile = await Profile.create({
-			bio,
-			profileImage,
+		const newCart = await Cart.create({
 			userId: newUser.id,
 		});
 
@@ -71,19 +68,19 @@ router.post('/register', validInfo, async (req, res) => {
 router.post('/login', validInfo, async (req, res) => {
 	try {
 		// Destructure request body
-		const { username, password } = req.body;
+		const { email, password } = req.body;
 
 		// Check if user doesn't exists
 		const user = await User.findAll({
 			where: {
-				username: username,
+				email: email,
 			},
 		});
 
 		if (user.length === 0) {
 			return res
 				.status(401)
-				.json('Password or Username is incorrect');
+				.json('Password or Email is incorrect');
 		}
 
 		// Check if incoming password is the same as the DB password
@@ -95,7 +92,7 @@ router.post('/login', validInfo, async (req, res) => {
 		if (!validPassword) {
 			return res
 				.status(401)
-				.json('Password or Username is incorrect');
+				.json('Password or Email is incorrect');
 		}
 
 		// Return user a JWT token
