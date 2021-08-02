@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Special } from './styled-components/NavigationStyles';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setIsAuthenticated } from '../actions/auth-actions';
 
 export default function Navigation() {
+	const dispatch = useDispatch();
+	const isAuthenticated = useSelector(
+		(state) => state.isAuthenticated
+	);
+
+	const logout = (e) => {
+		e.preventDefault();
+		localStorage.removeItem('token');
+		setIsAuthenticated(dispatch, false);
+		toast.success('Logged out successfully');
+	};
+
 	return (
 		<div>
 			<Navbar
@@ -35,11 +53,17 @@ export default function Navigation() {
 							</p>
 						</Link>
 					</Nav>
-					<Link to='/login' className='link'>
-						<p href='' className='mr-3 mt-3'>
-							Login
-						</p>
-					</Link>
+					{isAuthenticated === false ? (
+						<Link to='/login' className='link'>
+							<p href='' className='mr-3 mt-3'>
+								Login
+							</p>
+						</Link>
+					) : (
+						<Special onClick={(e) => logout(e)}>
+							Logout
+						</Special>
+					)}
 					<Link to='/cart' className='link'>
 						<p href='' className='mr-3 mt-3'>
 							Cart{' '}

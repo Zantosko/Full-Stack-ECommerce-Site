@@ -9,11 +9,18 @@ import ErrorPage from './ErrorPage';
 import Login from './Login';
 import Register from './Register';
 
+// React Toastify
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Redux Hooks
 import { useSelector, useDispatch } from 'react-redux';
 
 // Actions
 import { setIsAuthenticated } from '../actions/auth-actions';
+
+// React Toastify Configuration
+toast.configure();
 
 const Main = () => {
 	const isAuthenticated = useSelector(
@@ -23,10 +30,13 @@ const Main = () => {
 
 	const isAuth = async () => {
 		try {
-			const response = await fetch('/auth/is-verified', {
-				method: 'GET',
-				headers: { token: localStorage.token },
-			});
+			const response = await fetch(
+				'http:localhost:4001/auth/is-verified',
+				{
+					method: 'GET',
+					headers: { token: localStorage.token },
+				}
+			);
 
 			const parseResponse = await response.json();
 
@@ -54,7 +64,13 @@ const Main = () => {
 			<Route
 				exact
 				path='/products/:id'
-				component={ItemDetails}
+				render={(props) =>
+					isAuthenticated === true ? (
+						<ItemDetails {...props} />
+					) : (
+						<Redirect to='/login' />
+					)
+				}
 			></Route>
 			<Route
 				exact
@@ -72,7 +88,17 @@ const Main = () => {
 				path='/register'
 				component={Register}
 			></Route>
-			<Route exact path='/cart' component={Cart} />
+			<Route
+				exact
+				path='/cart'
+				render={(props) =>
+					isAuthenticated === true ? (
+						<Cart {...props} />
+					) : (
+						<Redirect to='/login' />
+					)
+				}
+			/>
 			<Route path='*' component={ErrorPage} />
 		</Switch>
 	);

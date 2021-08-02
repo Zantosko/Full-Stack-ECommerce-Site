@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const authorization = require('../middleware/authorization');
-const { User, Profile } = require('../models');
+const { User } = require('../models');
 
 router.get('/', authorization, async (req, res) => {
 	const user = await User.findOne({
@@ -11,3 +11,5 @@ router.get('/', authorization, async (req, res) => {
 
 	res.json(user);
 });
+
+module.exports = router;

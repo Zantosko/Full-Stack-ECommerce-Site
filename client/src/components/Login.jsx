@@ -12,8 +12,16 @@ import {
 	Button,
 	FormLink,
 } from './styled-components/FormStyles';
+import { toast } from 'react-toastify';
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setIsAuthenticated } from '../actions/auth-actions';
 
 export default function Login() {
+	const dispatch = useDispatch();
+	// const isAuthenticated = useSelector()
+
 	const [inputs, setInputs] = useState({
 		email: '',
 		password: '',
@@ -28,20 +36,42 @@ export default function Login() {
 		});
 	};
 
-	// const onSubmitForm = async e => {
-	//   e.preventDefault();
-	//   try {
-	//     const body = { email, password }
-	//     const response = await fetch()
-	//   } catch (err) {
-	//     console.error(err)
-	//   }
-	// }
+	const onSubmitForm = async (e) => {
+		e.preventDefault();
+		try {
+			const body = { email, password };
+			const response = await fetch(
+				'http://localhost:4001/auth/login',
+				{
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(body),
+				}
+			);
+
+			const parseResponse = await response.json();
+			if (parseResponse.token) {
+				localStorage.setItem('token', parseResponse.token);
+
+				setIsAuthenticated(dispatch, true);
+				setInputs({
+					email: '',
+					password: '',
+				});
+				toast.success('Logged in successfully');
+			} else {
+				setIsAuthenticated(dispatch, false);
+				toast.error(parseResponse);
+			}
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	return (
 		<>
 			<FormContainer>
-				<StyledForm>
+				<StyledForm onSubmit={onSubmitForm}>
 					<Link to='/' className='link'>
 						<Logo>
 							You<Special>Shop</Special>
@@ -51,11 +81,21 @@ export default function Login() {
 						<LabelWrapper>
 							<Label htmlFor='email'>Email</Label>
 						</LabelWrapper>
-						<Input name='email' type='email' />
+						<Input
+							type='email'
+							name='email'
+							value={email}
+							onChange={(e) => onChange(e)}
+						/>
 						<LabelWrapper>
 							<Label htmlFor='password'>Password</Label>
 						</LabelWrapper>
-						<Input name='password' type='password' />
+						<Input
+							type='password'
+							name='password'
+							value={password}
+							onChange={(e) => onChange(e)}
+						/>
 						<Button type='submit'></Button>
 						<Link to='/register'>
 							<FormLink>Or, Sign up</FormLink>

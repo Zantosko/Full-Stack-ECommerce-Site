@@ -28,7 +28,7 @@ app.use('/ind', require('./routes/index'));
 app.use('/auth', require('./routes/jwtAuth'));
 
 //? User Routes
-app.use('/user', require('./routes/user'));
+// app.use('/user', require('./routes/user'));
 
 //* Combines client and build directories
 // app.get('*', (req, res) => {
