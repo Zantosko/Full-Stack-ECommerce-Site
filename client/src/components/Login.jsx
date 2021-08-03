@@ -97,7 +97,7 @@ export default function Login() {
 							onChange={(e) => onChange(e)}
 						/>
 						<Button type='submit'></Button>
-						<Link to='/register'>
+						<Link to='/register' className='link'>
 							<FormLink>Or, Sign up</FormLink>
 						</Link>
 					</InputContainer>

@@ -5,10 +5,16 @@ import { removeItemFromCart } from '../actions/cart-actions';
 import EmptyCart from '../assets/empty-cart.png';
 import Footer from './Footer';
 import Navigation from './Navigation';
+import { toast } from 'react-toastify';
 
 export default function Cart() {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart);
+
+	const removeItem = (index) => {
+		removeItemFromCart(dispatch, index);
+		toast.error('Item removed from cart');
+	};
 
 	return (
 		<>
@@ -34,9 +40,7 @@ export default function Cart() {
 										<Card.Text>${item.price}</Card.Text>
 										<Button
 											variant='dark'
-											onClick={() =>
-												removeItemFromCart(dispatch, index)
-											}
+											onClick={() => removeItem(index)}
 										>
 											<i className='fas fa-times'></i>{' '}
 											Remove Item

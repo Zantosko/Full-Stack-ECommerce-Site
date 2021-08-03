@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Special } from './styled-components/NavigationStyles';
+import {
+	Special,
+	Cart,
+	ItemCounter,
+	HideCounter,
+} from './styled-components/NavigationStyles';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -13,6 +18,7 @@ export default function Navigation() {
 	const isAuthenticated = useSelector(
 		(state) => state.isAuthenticated
 	);
+	const itemCount = useSelector((state) => state.itemCount);
 
 	const logout = (e) => {
 		e.preventDefault();
@@ -65,10 +71,15 @@ export default function Navigation() {
 						</Special>
 					)}
 					<Link to='/cart' className='link'>
-						<p href='' className='mr-3 mt-3'>
+						<Cart href='' className='mr-3 mt-3'>
 							Cart{' '}
 							<i class='fa-lg fas fa-shopping-cart ml-1'></i>
-						</p>
+							{itemCount.count < 1 ? (
+								<HideCounter />
+							) : (
+								<ItemCounter>{itemCount.count}</ItemCounter>
+							)}
+						</Cart>
 					</Link>
 				</Navbar.Collapse>
 			</Navbar>
