@@ -66,7 +66,7 @@ export default function Register() {
 			);
 			const parseRes = await response.json();
 
-			if (parseRes.jwtToken) {
+			if (parseRes.token) {
 				localStorage.setItem('token', parseRes.jwtToken);
 				setIsAuthenticated(dispatch, true);
 				setInputs({

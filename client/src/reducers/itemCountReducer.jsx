@@ -11,12 +11,12 @@ const itemCount = (state = initialState, action) => {
 	switch (action.type) {
 		case INCREMENT_COUNT:
 			return {
-				count: state.count + 1,
+				count: action.payload,
 			};
 
 		case DECREMENT_COUNT:
 			return {
-				count: state.count - 1,
+				count: 0,
 			};
 
 		default:

@@ -3,9 +3,10 @@ import {
 	DECREMENT_COUNT,
 } from '../action-types/itemCount-action-types';
 
-export const incrementCount = (dispatch) => {
+export const incrementCount = (dispatch, itemAmount) => {
 	return dispatch({
 		type: INCREMENT_COUNT,
+		payload: itemAmount,
 	});
 };
 

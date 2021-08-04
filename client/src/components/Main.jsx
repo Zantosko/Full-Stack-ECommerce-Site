@@ -8,6 +8,7 @@ import Cart from './Cart';
 import ErrorPage from './ErrorPage';
 import Login from './Login';
 import Register from './Register';
+import ConfirmationPage from './ConfirmationPage';
 
 // React Toastify
 import { toast } from 'react-toastify';
@@ -94,6 +95,17 @@ const Main = () => {
 				render={(props) =>
 					isAuthenticated === true ? (
 						<Cart {...props} />
+					) : (
+						<Redirect to='/login' />
+					)
+				}
+			/>
+			<Route
+				exact
+				path='/cart/confirmation'
+				render={(props) =>
+					isAuthenticated === true ? (
+						<ConfirmationPage {...props} />
 					) : (
 						<Redirect to='/login' />
 					)

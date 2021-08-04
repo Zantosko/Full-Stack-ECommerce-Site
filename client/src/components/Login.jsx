@@ -18,10 +18,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setIsAuthenticated } from '../actions/auth-actions';
 import { setUserInfo } from '../actions/userInfo-action';
+import { incrementCount } from '../actions/itemCount-actions';
 
 export default function Login() {
 	const dispatch = useDispatch();
-	// const isAuthenticated = useSelector()
+	const cart = useSelector((state) => state.cart);
 
 	const [inputs, setInputs] = useState({
 		email: '',
@@ -61,6 +62,7 @@ export default function Login() {
 				});
 				setUserInfo(dispatch);
 				toast.success('Logged in successfully');
+				incrementCount(dispatch, cart.length);
 			} else {
 				setIsAuthenticated(dispatch, false);
 				toast.error(parseResponse);

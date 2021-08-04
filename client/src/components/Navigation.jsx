@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
 	Special,
@@ -12,6 +12,11 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setIsAuthenticated } from '../actions/auth-actions';
+import {
+	decrementCount,
+	incrementCount,
+} from '../actions/itemCount-actions';
+import { addItemToCart } from '../actions/cart-actions';
 
 export default function Navigation() {
 	const dispatch = useDispatch();
@@ -19,11 +24,16 @@ export default function Navigation() {
 		(state) => state.isAuthenticated
 	);
 	const itemCount = useSelector((state) => state.itemCount);
+	const cart = useSelector((state) => state.cart);
+	const history = useHistory();
 
 	const logout = (e) => {
 		e.preventDefault();
+		decrementCount(dispatch);
+
 		localStorage.removeItem('token');
 		setIsAuthenticated(dispatch, false);
+		history.push('/');
 		toast.success('Logged out successfully');
 	};
 

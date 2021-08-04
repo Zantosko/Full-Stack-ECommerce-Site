@@ -20,7 +20,12 @@ export default function ItemDetails({ match }) {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
 	const userInfo = useSelector((state) => state.userInfo);
+	const cart = useSelector((state) => state.cart);
 	const pageID = match.params.id;
+
+	useEffect(() => {
+		incrementCount(dispatch, cart.length);
+	}, [cart]);
 
 	if (!products[0]) return <Redirect to='/err' />;
 
@@ -30,10 +35,6 @@ export default function ItemDetails({ match }) {
 	const extractedProduct = specificProduct[0];
 
 	const addItem = async () => {
-		addItemToCart(dispatch, extractedProduct);
-		toast.success('Item added to cart!');
-		incrementCount(dispatch);
-
 		try {
 			const {
 				category,
@@ -62,6 +63,12 @@ export default function ItemDetails({ match }) {
 					body: JSON.stringify(body),
 				}
 			);
+
+			if (response.status === 200) {
+				addItemToCart(dispatch);
+				toast.success('Item added to cart!');
+				incrementCount(dispatch, cart.length);
+			}
 		} catch (err) {
 			console.error(err.message);
 		}
