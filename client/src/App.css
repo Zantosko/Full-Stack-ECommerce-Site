@@ -32,6 +32,11 @@
 	font-size: 20px !important;
 	background-color: #b5e5cf !important;
 	color: black !important;
+	transition: all ease 0.3s;
+}
+
+.display-btn:hover {
+	background-color: #fff !important;
 }
 
 /* About */
@@ -146,6 +151,20 @@
 
 .cart-card {
 	width: 300px;
+}
+
+.cart-btn {
+	margin-bottom: 2rem;
+	padding: 0.75rem 1rem !important;
+	font-size: 20px !important;
+	background-color: #333c3f !important;
+	color: white !important;
+	transition: all ease 0.3s;
+}
+
+.cart-btn:hover {
+	background-color: #b5e5cf !important;
+	color: black !important;
 }
 
 /* Footer */

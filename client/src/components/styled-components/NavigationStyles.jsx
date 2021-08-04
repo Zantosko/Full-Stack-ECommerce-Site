@@ -26,6 +26,6 @@ export const ItemCounter = styled.div`
 	color: #fff;
 `;
 
-export const HideCounter = styled.div`
+export const Hide = styled.div`
 	display: none;
 `;

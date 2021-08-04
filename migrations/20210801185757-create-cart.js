@@ -12,7 +12,7 @@ module.exports = {
 				type: Sequelize.STRING,
 			},
 			description: {
-				type: Sequelize.STRING,
+				type: Sequelize.TEXT,
 			},
 			apiNum: {
 				type: Sequelize.INTEGER,
@@ -21,7 +21,7 @@ module.exports = {
 				type: Sequelize.STRING,
 			},
 			price: {
-				type: Sequelize.INTEGER,
+				type: Sequelize.FLOAT,
 			},
 			title: {
 				type: Sequelize.STRING,

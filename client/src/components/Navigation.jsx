@@ -6,7 +6,7 @@ import {
 	Special,
 	Cart,
 	ItemCounter,
-	HideCounter,
+	Hide,
 } from './styled-components/NavigationStyles';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -75,7 +75,7 @@ export default function Navigation() {
 							Cart{' '}
 							<i class='fa-lg fas fa-shopping-cart ml-1'></i>
 							{itemCount.count < 1 ? (
-								<HideCounter />
+								<Hide />
 							) : (
 								<ItemCounter>{itemCount.count}</ItemCounter>
 							)}

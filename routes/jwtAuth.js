@@ -50,10 +50,6 @@ router.post('/register', validInfo, async (req, res) => {
 			rePassword: bcryptRePassword,
 		});
 
-		const newCart = await Cart.create({
-			userId: newUser.id,
-		});
-
 		// Generate JWT token
 		const token = jwtGenerator(newUser.id);
 

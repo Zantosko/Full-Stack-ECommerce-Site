@@ -17,6 +17,7 @@ import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setIsAuthenticated } from '../actions/auth-actions';
+import { setUserInfo } from '../actions/userInfo-action';
 
 export default function Login() {
 	const dispatch = useDispatch();
@@ -58,6 +59,7 @@ export default function Login() {
 					email: '',
 					password: '',
 				});
+				setUserInfo(dispatch);
 				toast.success('Logged in successfully');
 			} else {
 				setIsAuthenticated(dispatch, false);

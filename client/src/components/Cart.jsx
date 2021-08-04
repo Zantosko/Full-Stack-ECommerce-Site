@@ -1,11 +1,15 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Card, Button } from 'react-bootstrap';
-import { removeItemFromCart } from '../actions/cart-actions';
+import { Link } from 'react-router-dom';
 import EmptyCart from '../assets/empty-cart.png';
 import Footer from './Footer';
 import Navigation from './Navigation';
 import { toast } from 'react-toastify';
+import { Hide } from '../components/styled-components/NavigationStyles';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItemFromCart } from '../actions/cart-actions';
+import { decrementCount } from '../actions/itemCount-actions';
 
 export default function Cart() {
 	const dispatch = useDispatch();
@@ -14,6 +18,8 @@ export default function Cart() {
 	const removeItem = (index) => {
 		removeItemFromCart(dispatch, index);
 		toast.error('Item removed from cart');
+		const dbNumber = index + 1;
+		console.log(dbNumber);
 	};
 
 	return (
@@ -40,7 +46,10 @@ export default function Cart() {
 										<Card.Text>${item.price}</Card.Text>
 										<Button
 											variant='dark'
-											onClick={() => removeItem(index)}
+											onClick={() => {
+												removeItem(index);
+												decrementCount(dispatch);
+											}}
 										>
 											<i className='fas fa-times'></i>{' '}
 											Remove Item
@@ -53,6 +62,15 @@ export default function Cart() {
 						)}
 					</div>
 				</div>
+				{cart.length !== 0 ? (
+					<Link to='products'>
+						<Button variant='dark' className='cart-btn'>
+							Complete Purchase
+						</Button>
+					</Link>
+				) : (
+					<Hide />
+				)}
 			</div>
 			<Footer />
 		</>

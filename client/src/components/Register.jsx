@@ -69,7 +69,14 @@ export default function Register() {
 			if (parseRes.jwtToken) {
 				localStorage.setItem('token', parseRes.jwtToken);
 				setIsAuthenticated(dispatch, true);
-				toast.success('Register Successfully');
+				setInputs({
+					firstName: '',
+					lastName: '',
+					email: '',
+					password: '',
+					rePassword: '',
+				});
+				toast.success('Registered Successfully');
 			} else {
 				setIsAuthenticated(dispatch, false);
 				toast.error(parseRes);
