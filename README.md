@@ -22,6 +22,12 @@ This is a demo shopping site that uses the Fake Store API to load products for p
   <img src='client/src/assets/screenshots/ConfirmationPage.png' height='300' width='300'/>
 </p>
 
+## Key Features
+
+- **JWT Authentication** - This feature allows a user to create an account and login accordingly. Once a new user registers and account, it will hit a registration route that runs the request body it through custom middleware that validates if all input fields are filled and formatted correctly. Once validated the password is then "hashed" with Bcrypt and mapped to the database with Sequelize which results with the client being returned a JWT. This JWT is then saved in local storage. For logging in whenever a user makes a request Bcrypt will compare the entered password to the hashed password and then once again return a JWT, where it is then saved to local storage.
+
+- **Shopping Cart** - This feature allows the user to add or delete items that they wish to purchase. Whenever the cart is updated it will immediately be reflected in the database as well as updating the red item counter on the top-right corner of the screen. The current items that a user has in their cart will persist through logouts. If the user logs out the cart counter will be set to 0 and they will be unable to access the cart route until they log back in. Once the user logs back in an endpoint will be called to return their cart back to its previous state. If a user proceeds to checkout then their cart will be cleared and they will then be redirected to the confirmation page which details their order summary.
+
 ## Technologies Used
 
 **Client Side**
