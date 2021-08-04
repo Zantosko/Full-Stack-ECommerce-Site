@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a demo shopping site that uses the Fake Store API to load products for purchase. Key features include user authentication with JWT and a shopping cart where the user can add or delete products to purchase. PostgreSQL was the database mangament tool used for user and cart storage. Node.js was the runtime used and was paired with the Express.js framework.
+This is a demo shopping site that uses the Fake Store API to load products for purchase. Key features include user authentication with JWT and a shopping cart where the user can add or delete products to purchase. The front end framework selected for this project was React and the Redux library was used for state management. PostgreSQL was the database mangament tool used for user and cart storage. Node.js was the runtime used and was paired with the Express.js framework.
 
 ## Screenshots
 
