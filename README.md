@@ -2,9 +2,25 @@
 
 ## Description
 
-This is a demo shopping site that uses the Fake Store API to load products for purchase. Key features include user authentication with JWT and a shopping cart where the user can add or delete products to purchase.
+This is a demo shopping site that uses the Fake Store API to load products for purchase. Key features include user authentication with JWT and a shopping cart where the user can add or delete products to purchase. PostgreSQL was the database mangament tool used for user and cart storage. Node.js was the runtime used and was paired with the Express.js framework.
 
 ## Screenshots
+
+<p align='center'>
+  <img src='client/src/assets/screenshots/HomePage.png' height='300' width='300'/>
+</p>
+<p align='center'>
+  <img src='client/src/assets/screenshots/ProductsPage.png' height='300' width='300'/>
+</p>
+<p align='center'>
+  <img src='client/src/assets/screenshots/ProductDetails.png' height='300' width='300'/>
+</p>
+<p align='center'>
+  <img src='client/src/assets/screenshots/Cart.png' height='300' width='300'/>
+</p>
+<p align='center'>
+  <img src='client/src/assets/screenshots/ConfirmationPage.png' height='300' width='300'/>
+</p>
 
 ## Technologies Used
 
