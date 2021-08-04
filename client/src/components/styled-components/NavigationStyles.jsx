@@ -24,6 +24,25 @@ export const ItemCounter = styled.div`
 	margin: -15px 0 0 3.3rem;
 	font-size: 13px;
 	color: #fff;
+
+	@media (max-width: 770px) {
+		margin-left: 23.8rem;
+	}
+	@media (max-width: 700px) {
+		margin-left: 20rem;
+	}
+	@media (max-width: 650px) {
+		margin-left: 19.5rem;
+	}
+	@media (max-width: 600px) {
+		margin-left: 17.5rem;
+	}
+	@media (max-width: 550px) {
+		margin-left: 17.5rem;
+	}
+	@media (max-width: 500px) {
+		margin-left: 15.5rem;
+	}
 `;
 
 export const Hide = styled.div`
