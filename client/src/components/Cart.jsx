@@ -8,7 +8,10 @@ import { toast } from 'react-toastify';
 import { Hide } from '../components/styled-components/NavigationStyles';
 import { OrderTotal } from '../components/styled-components/CartStyles';
 
+// Redux Hooks
 import { useSelector, useDispatch } from 'react-redux';
+
+// Actions
 import { removeItemFromCart } from '../actions/cart-actions';
 import {
 	incrementCount,
@@ -21,11 +24,13 @@ export default function Cart() {
 	const cart = useSelector((state) => state.cart);
 	const total = useSelector((state) => state.total);
 
+	// Calls action to remove item from cart
 	const removeItem = (item) => {
 		removeItemFromCart(dispatch, item.id);
 		toast.error('Item removed from cart');
 	};
 
+	// Takes total of purchased items
 	const checkTotal = () => {
 		let sum = 0;
 		for (let item of cart) {
@@ -35,6 +40,7 @@ export default function Cart() {
 		setTotal(dispatch, sum);
 	};
 
+	// Sets count and checks purchase total on page load
 	useEffect(() => {
 		incrementCount(dispatch, cart.length);
 		checkTotal();
