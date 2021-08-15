@@ -27,11 +27,15 @@ export default function ItemDetails({ match }) {
 		incrementCount(dispatch, cart.length);
 	}, [cart]);
 
+	// If no products exist redirect to error page
 	if (!products[0]) return <Redirect to='/err' />;
 
+	// Extracts specific product array
 	const specificProduct = products[0].filter(
 		(product) => product.id == pageID
 	);
+
+	// Extracts specific item from product array
 	const extractedProduct = specificProduct[0];
 
 	const addItem = async () => {
