@@ -10,6 +10,8 @@ import Navigation from './Navigation';
 export default function Products() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products);
+
+	// Retrieves Products on page load
 	useEffect(() => {
 		if (products.length === 0) getProducts(dispatch);
 	}, []);
