@@ -21,6 +21,7 @@ import { setIsAuthenticated } from '../actions/auth-actions';
 export default function Register() {
 	const dispatch = useDispatch();
 
+	// Local State Vars
 	const [inputs, setInputs] = useState({
 		firstName: '',
 		lastName: '',
