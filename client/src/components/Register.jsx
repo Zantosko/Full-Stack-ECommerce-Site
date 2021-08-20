@@ -38,6 +38,7 @@ export default function Register() {
 		rePassword,
 	} = inputs;
 
+	// handle input change
 	const onChange = (e) => {
 		setInputs({
 			...inputs,
@@ -45,6 +46,7 @@ export default function Register() {
 		});
 	};
 
+	// Handle form submission
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
